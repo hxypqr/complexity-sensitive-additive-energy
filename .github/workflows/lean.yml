@@ -1,0 +1,46 @@
+name: Lean
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "formalization/**"
+      - ".github/workflows/lean.yml"
+  pull_request:
+    paths:
+      - "formalization/**"
+      - ".github/workflows/lean.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-audit:
+    name: Build and audit formalization
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Build Lean project
+        uses: leanprover/lean-action@v1
+        with:
+          lake-package-directory: formalization
+          auto-config: false
+          build: true
+
+      - name: Reject proof placeholders and custom axioms
+        working-directory: formalization
+        shell: bash
+        run: |
+          if grep -RInE --include='*.lean' \
+            '(^|[^[:alnum:]_])(sorry|admit|sorryAx)([^[:alnum:]_]|$)|^[[:space:]]*((private|protected)[[:space:]]+)?(axiom|opaque)[[:space:]]' \
+            ComplexitySensitiveEnergy ComplexitySensitiveEnergy.lean; then
+            exit 1
+          fi
+
+      - name: Run project audit
+        working-directory: formalization
+        run: lake env lean ComplexitySensitiveEnergy/Audit.lean

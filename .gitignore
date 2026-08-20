@@ -14,6 +14,12 @@
 *.xdv
 _minted-*/
 
+# Lean build products
+/formalization/.lake/
+*.olean
+*.ilean
+*.trace
+
 # Editor and operating-system files
 .DS_Store
 Thumbs.db
