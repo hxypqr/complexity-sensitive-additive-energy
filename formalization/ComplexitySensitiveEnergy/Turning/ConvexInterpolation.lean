@@ -511,7 +511,7 @@ theorem adjacentSecantSlope_neg (x y : ℕ → ℝ) (i : ℕ) :
   ring
 
 /-- **Finite ordered-data form of Lemma 6.1 (decreasing case).**
-Strictly decreasing adjacent slopes admit a globally strictly concave
+Strictly decreasing adjacent slopes have a globally strictly concave
 interpolant, obtained from the increasing case without any new analytic
 input. -/
 noncomputable def concaveInterpolationCertificate_of_adjacentSlopes

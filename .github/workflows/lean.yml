@@ -22,16 +22,24 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
-      - name: Build Lean project and audit axioms
+      - name: Build Lean project
         uses: leanprover/lean-action@v1
         with:
           lake-package-directory: formalization
           auto-config: false
           build: true
-          axiom-audit: true
-          axiom-audit-root: ComplexitySensitiveEnergy
+
+      - name: Reject proof placeholders and custom axioms
+        working-directory: formalization
+        shell: bash
+        run: |
+          if grep -RInE --include='*.lean' \
+            '(^|[^[:alnum:]_])(sorry|admit|sorryAx)([^[:alnum:]_]|$)|^[[:space:]]*((private|protected)[[:space:]]+)?(axiom|opaque)[[:space:]]' \
+            ComplexitySensitiveEnergy ComplexitySensitiveEnergy.lean; then
+            exit 1
+          fi
 
       - name: Run project audit
         working-directory: formalization

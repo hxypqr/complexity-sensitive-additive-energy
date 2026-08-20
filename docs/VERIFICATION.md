@@ -33,9 +33,8 @@ dependency sets.
 ## Continuous integration
 
 The GitHub Actions workflow at `.github/workflows/lean.yml` uses the toolchain pinned by
-the project. It builds the nested package, runs `lean-action`'s axiom audit with
-`ComplexitySensitiveEnergy` as the audit root, and executes the project-specific audit
-file.
+the project. It builds the nested package, rejects proof placeholders and custom global
+axiom/opaque declarations, and executes the project-specific audit file.
 
 ## Scope of the verification
 
