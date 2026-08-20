@@ -1,5 +1,8 @@
 # arXiv metadata
 
+- arXiv identifier: 2608.18956v1
+- Submitted: 19 August 2026
+
 ## Title
 
 Complexity-Sensitive Additive Energy and Off-Diagonal Young Inequalities on Bounded-Degree Algebraic Varieties
@@ -16,7 +19,7 @@ We develop additive-energy estimates and weighted Young inequalities for finite 
 
 ## Submission fields
 
-- Comments: 26 pages, no figures
+- Comments: 26 pages, no figures. An accompanying Lean 4 formalization is developed at https://github.com/hxypqr/complexity-sensitive-additive-energy
 - Report number: not assigned
 - Journal reference: not yet published
 - External DOI: not assigned

@@ -1,0 +1,17 @@
+name = "ComplexitySensitiveEnergy"
+version = "0.1.0"
+keywords = ["mathematics", "additive-combinatorics", "algebraic-geometry"]
+defaultTargets = ["ComplexitySensitiveEnergy"]
+
+[leanOptions]
+pp.unicode.fun = true
+relaxedAutoImplicit = false
+weak.linter.mathlibStandardSet = true
+
+[[require]]
+name = "mathlib"
+scope = "leanprover-community"
+rev = "v4.32.0"
+
+[[lean_lib]]
+name = "ComplexitySensitiveEnergy"

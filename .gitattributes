@@ -2,5 +2,11 @@
 .gitattributes text eol=lf
 .gitignore text eol=lf
 *.md text eol=lf
+*.cff text eol=lf
 *.tex text eol=lf
+*.lean text eol=lf
+*.toml text eol=lf
+*.json text eol=lf
+*.yml text eol=lf
+lean-toolchain text eol=lf
 *.pdf binary

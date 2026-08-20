@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite the arXiv preprint and this repository."
+title: "Complexity-Sensitive Additive Energy and Off-Diagonal Young Inequalities on Bounded-Degree Algebraic Varieties"
+type: article
+authors:
+  - family-names: Hu
+    given-names: Xiyu
+    affiliation: "School of Mathematical Sciences, University of Chinese Academy of Sciences"
+    email: hxypqr@gmail.com
+identifiers:
+  - type: other
+    value: "arXiv:2608.18956"
+    description: "arXiv preprint"
+repository-code: "https://github.com/hxypqr/complexity-sensitive-additive-energy"
+url: "https://arxiv.org/abs/2608.18956"
+version: "1"
+date-released: 2026-08-19

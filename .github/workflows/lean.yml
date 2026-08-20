@@ -1,0 +1,38 @@
+name: Lean
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "formalization/**"
+      - ".github/workflows/lean.yml"
+  pull_request:
+    paths:
+      - "formalization/**"
+      - ".github/workflows/lean.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-audit:
+    name: Build and audit formalization
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Build Lean project and audit axioms
+        uses: leanprover/lean-action@v1
+        with:
+          lake-package-directory: formalization
+          auto-config: false
+          build: true
+          axiom-audit: true
+          axiom-audit-root: ComplexitySensitiveEnergy
+
+      - name: Run project audit
+        working-directory: formalization
+        run: lake env lean ComplexitySensitiveEnergy/Audit.lean
